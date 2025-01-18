@@ -1,5 +1,6 @@
 package med.alura.springBoot.CarlosBaldessari.controller;
 
+import jakarta.transaction.Transactional;
 import med.alura.springBoot.CarlosBaldessari.medicos.DadosCadastrosMedicosDTO;
 import med.alura.springBoot.CarlosBaldessari.medicos.MedicoRepository;
 import med.alura.springBoot.CarlosBaldessari.medicos.medico;
@@ -17,6 +18,7 @@ public class MedicoController {
     private MedicoRepository repository;
 
     @PostMapping
+    @Transactional
     public void cadastro(@RequestBody DadosCadastrosMedicosDTO dados){
 
 
