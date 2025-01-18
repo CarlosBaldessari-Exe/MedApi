@@ -19,7 +19,7 @@ public class medico {
     private String nome;
     private String email;
     private String telefone;
-    private String cre;
+    private String crm;
     @Enumerated
     private Especialidade especialidade;
     @Embedded
@@ -29,7 +29,7 @@ public class medico {
         this.nome=dados.nome();
         this.email=dados.email();
         this.telefone=dados.telefone();
-        this.cre=dados.crm();
+        this.crm=dados.crm();
         this.especialidade=dados.especialidade();
         this.endereco=new Endereco(dados.endereco());
     }
