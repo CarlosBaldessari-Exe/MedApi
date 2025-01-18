@@ -18,6 +18,7 @@ public class medico {
     private Long id;
     private String nome;
     private String email;
+    private String telefone;
     private String cre;
     @Enumerated
     private Especialidade especialidade;
@@ -27,6 +28,7 @@ public class medico {
     public medico(DadosCadastrosMedicosDTO dados) {
         this.nome=dados.nome();
         this.email=dados.email();
+        this.telefone=dados.telefone();
         this.cre=dados.crm();
         this.especialidade=dados.especialidade();
         this.endereco=new Endereco(dados.endereco());

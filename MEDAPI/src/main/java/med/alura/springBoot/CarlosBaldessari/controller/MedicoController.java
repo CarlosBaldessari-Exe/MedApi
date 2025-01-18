@@ -1,6 +1,7 @@
 package med.alura.springBoot.CarlosBaldessari.controller;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 import med.alura.springBoot.CarlosBaldessari.medicos.DadosCadastrosMedicosDTO;
 import med.alura.springBoot.CarlosBaldessari.medicos.MedicoRepository;
 import med.alura.springBoot.CarlosBaldessari.medicos.medico;
@@ -19,11 +20,13 @@ public class MedicoController {
 
     @PostMapping
     @Transactional
-    public void cadastro(@RequestBody DadosCadastrosMedicosDTO dados){
+    public void cadastro(@RequestBody
+                         @Valid
+                         DadosCadastrosMedicosDTO dados){
 
 
         repository.save(new medico(dados));
 
 
-        }
+    }
 }
