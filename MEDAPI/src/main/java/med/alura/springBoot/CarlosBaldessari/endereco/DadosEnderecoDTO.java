@@ -1,6 +1,6 @@
 package med.alura.springBoot.CarlosBaldessari.endereco;
 
-public record DadosEndereco(
+public record DadosEnderecoDTO(
         String logradouro,
         String Bairro,
         String cep,

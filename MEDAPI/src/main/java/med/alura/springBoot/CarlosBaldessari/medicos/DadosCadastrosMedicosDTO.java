@@ -1,12 +1,12 @@
 package med.alura.springBoot.CarlosBaldessari.medicos;
 
-import med.alura.springBoot.CarlosBaldessari.endereco.DadosEndereco;
+import med.alura.springBoot.CarlosBaldessari.endereco.DadosEnderecoDTO;
 
-public record DadosCadastrosMedicos(
+public record DadosCadastrosMedicosDTO(
         String nome,
         String email,
         String crm,
         Especialidade especialidade,
-        DadosEndereco endereco) {
+        DadosEnderecoDTO endereco) {
 
 }
