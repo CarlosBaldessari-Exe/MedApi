@@ -1,6 +1,6 @@
-package med.alura.springBoot.CarlosBaldessari.paciente;
+package med.alura.springBoot.CarlosBaldessari.domain.paciente;
 
-import med.alura.springBoot.CarlosBaldessari.endereco.DadosEnderecoDTO;
+import med.alura.springBoot.CarlosBaldessari.domain.endereco.DadosEnderecoDTO;
 
 public record DadosCadastradosPacientesDTO(String nome,
                                         String email,

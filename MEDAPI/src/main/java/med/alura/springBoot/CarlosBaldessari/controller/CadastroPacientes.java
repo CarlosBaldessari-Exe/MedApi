@@ -1,6 +1,6 @@
 package med.alura.springBoot.CarlosBaldessari.controller;
 
-import med.alura.springBoot.CarlosBaldessari.paciente.DadosCadastradosPacientesDTO;
+import med.alura.springBoot.CarlosBaldessari.domain.paciente.DadosCadastradosPacientesDTO;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

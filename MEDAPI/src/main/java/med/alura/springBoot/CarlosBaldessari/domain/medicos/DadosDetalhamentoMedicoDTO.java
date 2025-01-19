@@ -1,8 +1,6 @@
-package med.alura.springBoot.CarlosBaldessari.medicos;
+package med.alura.springBoot.CarlosBaldessari.domain.medicos;
 
-import med.alura.springBoot.CarlosBaldessari.endereco.Endereco;
-
-import java.security.PublicKey;
+import med.alura.springBoot.CarlosBaldessari.domain.endereco.Endereco;
 
 public record DadosDetalhamentoMedicoDTO(Long id,
                                       String nome,

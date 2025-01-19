@@ -1,6 +1,4 @@
-package med.alura.springBoot.CarlosBaldessari.paciente;
-
-import med.alura.springBoot.CarlosBaldessari.medicos.DadosListagemMedicosDTO;
+package med.alura.springBoot.CarlosBaldessari.domain.paciente;
 
 public record DadosListagemPacientes(
         Long Id,

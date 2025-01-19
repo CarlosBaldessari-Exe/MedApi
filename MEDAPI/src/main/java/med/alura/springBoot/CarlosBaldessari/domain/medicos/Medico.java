@@ -1,37 +1,41 @@
-package med.alura.springBoot.CarlosBaldessari.paciente;
+package med.alura.springBoot.CarlosBaldessari.domain.medicos;
 
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import med.alura.springBoot.CarlosBaldessari.endereco.Endereco;
+import lombok.*;
+import med.alura.springBoot.CarlosBaldessari.domain.endereco.Endereco;
 
-
+@Table(name = "medicos")
+@Entity(name = "Medico")
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of="id")
-@Entity(name = "paciente")
-public class Paciente {
+@EqualsAndHashCode(of = "id")
+public class Medico {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Boolean ativo;
     private Long id;
     private String nome;
-    private  String email;
+    private String email;
+
     private String telefone;
-    private String cpf;
+
+    private String crm;
+
+    @Enumerated(EnumType.STRING)
+    private Especialidade especialidade;
+
     @Embedded
     private Endereco endereco;
 
+    private boolean ativo;
 
-    public Paciente(@Valid DadosCadastradosPacientesDTO dados) {
-         this.nome = dados.nome();
+    public Medico(DadosCadastrosMedicosDTO dados) {
+        this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
-        this.cpf = dados.cpf();
-        this.endereco=new Endereco(dados.endereco());
-        this.ativo=true;
+        this.crm = dados.crm();
+        this.especialidade = dados.especialidade();
+        this.endereco = new Endereco(dados.endereco());
+        this.ativo = true;
     }
 
     public Long getId() {
@@ -66,12 +70,20 @@ public class Paciente {
         this.telefone = telefone;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getCrm() {
+        return crm;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setCrm(String crm) {
+        this.crm = crm;
+    }
+
+    public Especialidade getEspecialidade() {
+        return especialidade;
+    }
+
+    public void setEspecialidade(Especialidade especialidade) {
+        this.especialidade = especialidade;
     }
 
     public Endereco getEndereco() {
@@ -82,14 +94,7 @@ public class Paciente {
         this.endereco = endereco;
     }
 
-    public void atualizarInformacoes(@Valid AtualizacaoDadosPacientes dados) {
-    }
-
-
-     public void excluir() {
-        this.ativo  = false;
-    }
- public void atualizarInformacoesPacientes( AtualizacaoDadosPacientes dados) {
+    public void atualizarInformacoes( AtualizacaoDadosMedicos dados) {
 
         if (dados.nome() != null){
             this.nome=dados.nome();
@@ -100,5 +105,10 @@ public class Paciente {
         if (dados.endereco() != null){
             this.endereco.atualizarInformacoes(dados.endereco());
         }
-}
+
+    }
+
+    public void excluir() {
+        this.ativo  = false;
+    }
 }

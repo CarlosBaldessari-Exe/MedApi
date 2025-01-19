@@ -1,4 +1,4 @@
-package med.alura.springBoot.CarlosBaldessari.medicos;
+package med.alura.springBoot.CarlosBaldessari.domain.medicos;
 
 public record DadosListagemMedicosDTO(Long id,  String nome, String email, String crm, Especialidade especialidade) {
 

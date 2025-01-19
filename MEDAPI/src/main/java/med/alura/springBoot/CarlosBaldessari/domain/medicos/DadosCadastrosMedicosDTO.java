@@ -1,13 +1,16 @@
-package med.alura.springBoot.CarlosBaldessari.medicos;
+package med.alura.springBoot.CarlosBaldessari.domain.medicos;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import med.alura.springBoot.CarlosBaldessari.endereco.DadosEnderecoDTO;
+import med.alura.springBoot.CarlosBaldessari.domain.endereco.DadosEnderecoDTO;
 
 public record DadosCadastrosMedicosDTO(
+        @NotBlank
+        Long id,
+
         @NotBlank
         String nome,
 
@@ -27,6 +30,9 @@ public record DadosCadastrosMedicosDTO(
 
         @NotNull
         @Valid
-        DadosEnderecoDTO endereco) {
+        DadosEnderecoDTO endereco,
+
+        @NotNull
+        Boolean ativo) {
 
 }

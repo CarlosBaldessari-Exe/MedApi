@@ -1,4 +1,4 @@
-package med.alura.springBoot.CarlosBaldessari.endereco;
+package med.alura.springBoot.CarlosBaldessari.domain.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
