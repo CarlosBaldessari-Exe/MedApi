@@ -2,16 +2,12 @@ package med.alura.springBoot.CarlosBaldessari.controller;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import med.alura.springBoot.CarlosBaldessari.medicos.DadosCadastrosMedicosDTO;
-import med.alura.springBoot.CarlosBaldessari.medicos.DadosListagemMedicosDTO;
-import med.alura.springBoot.CarlosBaldessari.medicos.MedicoRepository;
-import med.alura.springBoot.CarlosBaldessari.medicos.medico;
+import med.alura.springBoot.CarlosBaldessari.medicos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/medicos")
@@ -27,14 +23,28 @@ public class MedicoController {
                          DadosCadastrosMedicosDTO dados){
 
 
-        repository.save(new medico(dados));
+        repository.save(new Medico(dados));
 
 
     }
     @GetMapping
-    public Page<DadosListagemMedicosDTO> listar(Pageable paginacao){
+    public Page<DadosListagemMedicosDTO> listar(@PageableDefault(size =10, sort = {"nome"}) Pageable paginacao){
 
-        return repository.findAll(paginacao).map(DadosListagemMedicosDTO::new);
+        return repository.findAllByAtivoTrue(paginacao).map(DadosListagemMedicosDTO::new);
+
+    }
+    @PutMapping
+    @Transactional
+    public void atulizar(@RequestBody @Valid AtualizacaoDadosMedicos dados){
+        var medicos = repository.getReferenceById(dados.id());
+        medicos.atualizarInformacoes(dados);
+
+    }
+    @DeleteMapping("/{id}")
+    @Transactional
+    public void excluir(@PathVariable Long id){
+           var medicos = repository.getReferenceById(id);
+           medicos.excluir();//Esto inactiva el usuario, no lo borra
 
     }
 }
