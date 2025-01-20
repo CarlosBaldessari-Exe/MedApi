@@ -48,7 +48,7 @@ public class Usuario implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return UserDetawils.super.isAccountNonLocked();
+        return UserDetails.super.isAccountNonLocked();
     }
 
     @Override
