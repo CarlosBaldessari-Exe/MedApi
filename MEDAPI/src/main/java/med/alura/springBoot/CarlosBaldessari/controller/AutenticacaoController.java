@@ -1,9 +1,10 @@
 package med.alura.springBoot.CarlosBaldessari.controller;
 
 import jakarta.validation.Valid;
-import med.alura.springBoot.CarlosBaldessari.Infra.security.tokenService;
+import med.alura.springBoot.CarlosBaldessari.Infra.security.TokenService;
 import med.alura.springBoot.CarlosBaldessari.domain.usurario.DadosAutenticacaoDTO;
-import med.alura.springBoot.CarlosBaldessari.domain.usurario.usuario;
+import med.alura.springBoot.CarlosBaldessari.domain.usurario.Usuario;
+import med.alura.springBoot.CarlosBaldessari.security.DadosTokenJWT;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.net.Authenticator;
-
 @Controller
 @RequestMapping("/login")
 public class AutenticacaoController {
@@ -22,14 +21,16 @@ public class AutenticacaoController {
     private AuthenticationManager manager;
 
     @Autowired
-    private tokenService tokenService;
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid DadosAutenticacaoDTO dados){
-        var token =new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
-        var autentication = manager.authenticate(token);
+        var authenticationToken =new UsernamePasswordAuthenticationToken(dados.login(), dados.senha());
+        var autentication = manager.authenticate(authenticationToken);
 
-        return ResponseEntity.ok(tokenService.gerarToken((usuario) autentication.getPrincipal()));
+        var tokenJWT = tokenService.gerarToken((Usuario) autentication.getPrincipal());
+
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
 
     }
 }

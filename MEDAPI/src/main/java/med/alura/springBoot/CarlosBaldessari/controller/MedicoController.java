@@ -53,14 +53,14 @@ public class MedicoController {
     public ResponseEntity excluir(@PathVariable Long id){
 
         var medicos = repository.getReferenceById(id);
-        medicos.excluir();//Esto inactiva el usuario, no lo borra
+        medicos.excluir();//Esto inactiva el Usuario, no lo borra
 
         return ResponseEntity.noContent().build();
     }
 
        @GetMapping("/{id}")
     public ResponseEntity detalhar(@PathVariable Long id){
-        
+
         var medicos = repository.getReferenceById(id);
                 return ResponseEntity.ok(new DadosDetalhamentoMedicoDTO(medicos));
     }
