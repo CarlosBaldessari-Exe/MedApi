@@ -3,11 +3,13 @@ package med.alura.springBoot.CarlosBaldessari.domain.consulta.validacoes;
 
 import med.alura.springBoot.CarlosBaldessari.domain.ValidacaoException;
 import med.alura.springBoot.CarlosBaldessari.domain.consulta.DadosAgendamentoConsultaDTO;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 import java.time.LocalTime;
 
-public class HorarioAntecedencia {
+@Component
+public class HorarioAntecedencia implements ValidadorAgendamentoConsulta {
 public void  validar(DadosAgendamentoConsultaDTO dadosAgendamentoConsultaDTO){
     var dataConsulta= dadosAgendamentoConsultaDTO.data();
     var agora= LocalTime.now();

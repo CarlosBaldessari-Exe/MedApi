@@ -2,10 +2,12 @@ package med.alura.springBoot.CarlosBaldessari.domain.consulta.validacoes;
 
 import med.alura.springBoot.CarlosBaldessari.domain.ValidacaoException;
 import med.alura.springBoot.CarlosBaldessari.domain.consulta.DadosAgendamentoConsultaDTO;
+import org.springframework.stereotype.Component;
 
 import java.time.DayOfWeek;
 
-public class HorarioFuncionamentoClinica {
+@Component
+public class HorarioFuncionamentoClinica implements  ValidadorAgendamentoConsulta{
     public void validar(DadosAgendamentoConsultaDTO dadosAgendamentoConsultaDTO){
         var dataConsulta = dadosAgendamentoConsultaDTO.data();
 
